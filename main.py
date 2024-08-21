@@ -1,56 +1,28 @@
+import filecmp
 import os
 
-target_folder = "C:\\Users\\leoca\\Music\\320kbps"
 
-print(target_folder)
+def get_duplicates(path):
+    """
+    Prints duplicate files from a directory
+    :param path: path to directory
+    :return: None
+    """
+    assert os.path.isdir(path), "Path is not a directory"
 
-if os.path.exists(target_folder):
-    print("That location exists")
-    if os.path.isfile(target_folder):
-        print("That is a file")
-    elif os.path.isdir(target_folder):
-        print("That is a folder")
-    else:
-        print("Not a file or folder")
-else:
-    print("That location doesn't exist")
+    files = os.listdir(path)
 
-print("")
+    duplicates = []
 
-try:
-    for i, file in enumerate(os.listdir(target_folder)):
-        #print(f"File {i} is {file}")
-        file_truncated = file[:10]
-        for j, file2 in enumerate(os.listdir(target_folder)):
-            file_truncated2 = file2[:10]
-            #print(f"File {i} is {file}")
-            if i != j and file_truncated == file_truncated2:
-                print(f"{file} is a duplicate")
-            #else:
-                #print()
-                #print(f"No other file by this name")
+    for file_1 in files:
+        for file_2 in files:
+            if file_1 != file_2 and filecmp.cmp(os.path.join(path, file_1), os.path.join(path, file_2)) and file_1 not in duplicates:
+                duplicates.append(file_2)
 
-except Exception as e:
-    print("Something went wrong")
-    print(e)
+    print(duplicates)
 
 
+if __name__ == "__main__":
+    target_folder = "C:\\Users\\leoca\\Music\\320kbps"
 
-
-
-
-
-
-
-
-
-
-'''
-songName = 0
-songFinder = 0
-
-def songFinder(name):
-    print("looking for matching track...")
-    for i in len(folder)
-
-if songName = songFinder(name):'''
+    get_duplicates(target_folder)
