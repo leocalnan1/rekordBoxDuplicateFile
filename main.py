@@ -1,14 +1,18 @@
+
 import os
+import shutil
 
-target_folder = "C:\\Users\\leoca\\Music\\320kbps"
+originalFolder = "C:\\Users\\leoca\\Music\\320kbps\\"
 
-print(target_folder)
+destinationFolder = "C:\\Users\\leoca\\Music\\MovedFiles\\"
 
-if os.path.exists(target_folder):
+print(originalFolder)
+
+if os.path.exists(originalFolder):
     print("That location exists")
-    if os.path.isfile(target_folder):
+    if os.path.isfile(originalFolder):
         print("That is a file")
-    elif os.path.isdir(target_folder):
+    elif os.path.isdir(originalFolder):
         print("That is a folder")
     else:
         print("Not a file or folder")
@@ -17,23 +21,27 @@ else:
 
 print("")
 
-try:
-    for i, file in enumerate(os.listdir(target_folder)):
-        #print(f"File {i} is {file}")
-        file_truncated = file[:10]
-        for j, file2 in enumerate(os.listdir(target_folder)):
-            file_truncated2 = file2[:10]
-            #print(f"File {i} is {file}")
-            if i != j and file_truncated == file_truncated2:
-                print(f"{file} is a duplicate")
-            #else:
-                #print()
-                #print(f"No other file by this name")
+for i, file in enumerate(os.listdir(originalFolder)):
 
-except Exception as e:
-    print("Something went wrong")
-    print(e)
+    file_truncated = file[:35].lower()
 
+    for j, file2 in enumerate(os.listdir(originalFolder)):
+
+        file_truncated2 = file2[:35].lower()
+
+        if i != j and file_truncated == file_truncated2:
+                #if "remix" in file and "remix" not in file2:
+                    #print(end="")
+                #elif "remix" in file2 and "remix" not in file:
+                    #print(end="")
+                #else:
+            print(f"'{file}' is a duplicate")
+            filePath = "C:\\Users\\leoca\\Music\\320kbps\\" + file
+            print(filePath)
+            shutil.move(filePath, destinationFolder)
+            print(f"'{file}' Transferred")
+        else:
+            print(end="")
 
 
 

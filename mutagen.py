@@ -1,4 +1,16 @@
 #determine title and artist to find other duplicates rather than just file name
+import os
+from mutagen.mp3 import MP3
+
+
+sourceFolder = "C:\\Users\\leoca\\Music\\320kbps\\"
+fileName = "6419138_Muy Tranquilo_(Original Mix).mp3"
+fullPath = sourceFolder + fileName
+def showDetails():
+
+    fileData = os.path.splitext(filename)
+
+
 
 '''
 import mutagen
