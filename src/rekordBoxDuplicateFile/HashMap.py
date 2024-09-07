@@ -1,6 +1,7 @@
 import os
 import shutil
 import mutagen
+import rekordBoxDuplicateFile
 
 originalFolder = "C:\\Users\\leoca\\Music\\320kbps\\"
 
@@ -12,8 +13,8 @@ trackFolder = {}
 tracks = []
 
 for i, file in enumerate(os.listdir(originalFolder)):
-    fileTruncated = file[:40].lower()
-    tracks += [f"{fileTruncated}"]
+    fileTruncated = file.lower()
+    tracks += [f"{file}"]
     trackFolder["320kbpsFolder"] = []
     trackFolder["320kbpsFolder"] += tracks
     print(f"file {i} is {fileTruncated}")
