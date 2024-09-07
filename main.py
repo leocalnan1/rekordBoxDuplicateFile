@@ -1,3 +1,11 @@
+# logic
+#---------------------------------------------------------------------------------------------#
+# 1) Be able to search for duplicates with any length string
+# 2) Search and identify the same song but with different name (eg/ 01-Billie_Jean.mp3 & Billie_Jean.mp3)
+# 3) Moves the duplicate that has a later creation / modified date from the 320kbps folder to "MovedFiles" folder for further inspection
+# 4)
+
+
 
 import os
 import shutil
