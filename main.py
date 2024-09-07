@@ -1,28 +1,63 @@
-import filecmp
 import os
+import shutil
+
+originalFolder = "C:\\Users\\leoca\\Music\\320kbps\\"
+
+destinationFolder = "C:\\Users\\leoca\\Music\\MovedFiles\\"
+
+print(originalFolder)
+
+if os.path.exists(originalFolder):
+    print("That location exists")
+    if os.path.isfile(originalFolder):
+        print("That is a file")
+    elif os.path.isdir(originalFolder):
+        print("That is a folder")
+    else:
+        print("Not a file or folder")
+else:
+    print("That location doesn't exist")
+
+print("")
+
+for i, file in enumerate(os.listdir(originalFolder)):
+
+    file_truncated = file[:35].lower()
+
+    for j, file2 in enumerate(os.listdir(originalFolder)):
+
+        file_truncated2 = file2[:35].lower()
+
+        if i != j and file_truncated == file_truncated2:
+                #if "remix" in file and "remix" not in file2:
+                    #print(end="")
+                #elif "remix" in file2 and "remix" not in file:
+                    #print(end="")
+                #else:
+            print(f"'{file}' is a duplicate")
+            filePath = "C:\\Users\\leoca\\Music\\320kbps\\" + file
+            print(filePath)
+            shutil.move(filePath, destinationFolder)
+            print(f"'{file}' Transferred")
+        else:
+            print(end="")
 
 
-def get_duplicates(path):
-    """
-    Prints duplicate files from a directory
-    :param path: path to directory
-    :return: None
-    """
-    assert os.path.isdir(path), "Path is not a directory"
-
-    files = os.listdir(path)
-
-    duplicates = []
-
-    for file_1 in files:
-        for file_2 in files:
-            if file_1 != file_2 and filecmp.cmp(os.path.join(path, file_1), os.path.join(path, file_2)) and file_1 not in duplicates:
-                duplicates.append(file_2)
-
-    print(duplicates)
 
 
-if __name__ == "__main__":
-    target_folder = "C:\\Users\\leoca\\Music\\320kbps"
 
-    get_duplicates(target_folder)
+
+
+
+
+
+
+'''
+songName = 0
+songFinder = 0
+
+def songFinder(name):
+    print("looking for matching track...")
+    for i in len(folder)
+
+if songName = songFinder(name):'''
